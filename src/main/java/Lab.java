@@ -1,5 +1,6 @@
 
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Maps are key/value pairs. They are used in situations where we have some value that we'd like
@@ -26,7 +27,8 @@ public class Lab {
      * so here Integer is a wrapper for int.
      */
     public Map<Integer, String> createMap(){
-        return null;
+        Map<Integer, String> newMap = new HashMap<Integer, String>();
+        return newMap;
     }
 
     /**
@@ -36,7 +38,7 @@ public class Lab {
      */
     public int getSize(Map<Integer,String> map){
 //        return total number of key/value pairs in the map
-        return 0;
+        return map.size();
     }
 
     /**
@@ -47,6 +49,8 @@ public class Lab {
      * @return nothing, pass by reference will cause changes to the list object to be reflected across the program.
      */
     public void addKeyValuePair(Map<Integer,String> map, int key, String value){
+        Integer wrappedKey = key;
+        map.put(wrappedKey, value);
     }
 
     /**
@@ -56,7 +60,8 @@ public class Lab {
      * @return the value associated with key in map.
      */
     public String getValueFromKey(Map<Integer, String> map, int key){
-        return "";
+        Integer wrappedKey = key;
+        return map.get(wrappedKey);
     }
 
     /**
@@ -66,6 +71,8 @@ public class Lab {
      * @return nothing, pass by reference will cause changes to the list object to be reflected across the program.
      */
     public void removeKeyValuePair(Map<Integer, String> map, int key){
+        Integer wrappedKey = key;
+        map.remove(wrappedKey);
     }
 
     /**
@@ -76,6 +83,13 @@ public class Lab {
      * @return nothing, pass by reference will cause changes to the list object to be reflected across the program.
      */
     public void overwriteValue(Map<Integer, String> map, int key, String value){
-
+        //Integer wrappedKey = key;
+        //map.put(wrappedKey, value);
+        /**
+         * Turns out the Hashmap put() method does this replacement automatically if the set already contains a given key
+         * So we can just call the previous method we used that called put()
+         */
+        addKeyValuePair(map,key,value);
+        
     }
 }
